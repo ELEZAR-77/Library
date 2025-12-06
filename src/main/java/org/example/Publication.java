@@ -66,9 +66,9 @@ public abstract class Publication {
 
     @Override
     public int hashCode() {
-        int result = 11;
-        result = 31 * (title != null ? title.hashCode() : 0);
-        result = 31 * (author != null ? author.hashCode() : 0);
+        int result = title != null ? title.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (author != null ? author.hashCode() : 0);
         result = 31 * result + year;
         return result;
     }
