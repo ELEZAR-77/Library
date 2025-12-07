@@ -27,7 +27,7 @@ public class Book extends Publication implements Printable{
     public String toString() {
         return "Book{" +
                 "iSBN='" + iSBN + '\'' +
-                '}';
+                "} " + super.toString();
     }
 
     @Override

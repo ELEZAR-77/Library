@@ -5,8 +5,9 @@ import java.util.Objects;
 public class Magazine extends Publication implements Printable{
     private int issueNumber;
 
-    public Magazine(String title, String author, int year) {
+    public Magazine(int issueNumber, String title, String author, int year) {
         super(title, author, year);
+        this.issueNumber =  issueNumber;
     }
 
     @Override
@@ -26,8 +27,8 @@ public class Magazine extends Publication implements Printable{
     @Override
     public String toString() {
         return "Magazine{" +
-                "issueNumber=" + issueNumber +
-                '}';
+                "issueNumber=" + issueNumber + '\'' +
+                "} " + super.toString();
     }
 
     @Override

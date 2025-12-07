@@ -27,7 +27,7 @@ public class Newspaper extends Publication implements Printable{
     public String toString() {
         return "Newspaper{" +
                 "publicationDay='" + publicationDay + '\'' +
-                '}';
+                "} " + super.toString();
     }
 
     @Override
