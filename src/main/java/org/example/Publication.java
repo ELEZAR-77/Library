@@ -56,10 +56,10 @@ public abstract class Publication {
 
     @Override
     public String toString() {
-        return "Publication{" +
-                "id='" + id + '\'' +
-                "title='" + title + '\'' +
-                ", author='" + author + '\'' +
+        return "[id=" + id + "]" +
+                " Publication{" +
+                "title=" + title + '\'' +
+                ", author=" + author + '\'' +
                 ", year=" + year +
                 '}';
     }

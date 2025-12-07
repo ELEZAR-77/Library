@@ -106,7 +106,6 @@ public class Main {
                 case (5):
                     System.out.println("Вот все что в каталоге: ");
                     library.listPublications();
-
                     break;
 
                 case (6):

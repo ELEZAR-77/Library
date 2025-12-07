@@ -38,6 +38,7 @@ public class Library {
 
         for(Publication pub : publications) {
             System.out.println(pub);
+            System.out.println();
         }
     }
 
