@@ -27,91 +27,102 @@ public class Main {
         library.addPublication((Publication) book3);
 
         while (true) {
-            System.out.println("Выберите тим публикации: 1 - Book, 2 - Magazine, 3 - Newspaper," +
-                                                                            " 4 - поиск по автору," +
-                                                                            " 5 - все публикации," +
-                                                                            " 6 - кол-во публикаций: " +
-                                                                            " 7 - удалить публикацию" +
+            System.out.println("1 - Добавить новую публикацию, 2 - все публикации, 3 - поиск по автору," +
+                                                                            " 4 - кол-во публикаций," +
+                                                                            " 5 - удалить публикацию," +
                                                                             " 0 - выход");
 
-            int publicationType = sc.nextInt();
+            int operation = sc.nextInt();
             sc.nextLine();
 
-            switch (publicationType) {
-                case (1):
-                    System.out.print("Введите название: ");
-                    String bookTitle = sc.nextLine();
+            switch (operation) {
+                case(1):
+                    System.out.println("Выберите тип публикации: 1 – Book, 2 – Magazine, 3 – Newspaper");
 
-                    System.out.print("Введите автора: ");
-                    String bookAuthor = sc.nextLine();
-
-                    System.out.print("Введите год: ");
-                    int bookYear = sc.nextInt();
+                    int publicationType = sc.nextInt();
                     sc.nextLine();
 
-                    System.out.print("Введите iSBN: ");
-                    String iSBN = sc.nextLine();
+                    switch (publicationType) {
+                        case (1):
+                            System.out.print("Введите название: ");
+                            String bookTitle = sc.nextLine();
 
-                    Printable book = new Book(iSBN, bookTitle, bookAuthor, bookYear);
-                    library.addPublication((Publication) book);
+                            System.out.print("Введите автора: ");
+                            String bookAuthor = sc.nextLine();
+
+                            System.out.print("Введите год: ");
+                            int bookYear = sc.nextInt();
+                            sc.nextLine();
+
+                            System.out.print("Введите iSBN: ");
+                            String iSBN = sc.nextLine();
+
+                            Printable book = new Book(iSBN, bookTitle, bookAuthor, bookYear);
+                            library.addPublication((Publication) book);
+
+                            break;
+
+                        case (2):
+                            System.out.print("Введите название: ");
+                            String magazineTitle = sc.nextLine();
+
+                            System.out.print("Введите автора: ");
+                            String magazineAuthor = sc.nextLine();
+
+                            System.out.print("Введите год: ");
+                            int magazineYear = sc.nextInt();
+                            sc.nextLine();
+
+                            System.out.print("Введите номер журнала: ");
+                            int issueNumber = sc.nextInt();
+                            sc.nextLine();
+
+                            Printable magazine = new Magazine(issueNumber, magazineTitle, magazineAuthor, magazineYear);
+                            library.addPublication((Publication) magazine);
+
+                            break;
+
+                        case (3):
+                            System.out.print("Введите название: ");
+                            String newsTitle = sc.nextLine();
+
+                            System.out.print("Введите автора: ");
+                            String newsAuthor = sc.nextLine();
+
+                            System.out.print("Введите год: ");
+                            int newsYear = sc.nextInt();
+                            sc.nextLine();
+
+                            System.out.print("Введите день публикации: ");
+                            String publicationDay = sc.nextLine();
+
+                            Printable newspaper = new Newspaper(publicationDay, newsTitle, newsAuthor, newsYear);
+                            library.addPublication((Publication) newspaper);
+
+                            break;
+                    }
 
                     break;
 
                 case (2):
-                    System.out.print("Введите название: ");
-                    String magazineTitle = sc.nextLine();
-
-                    System.out.print("Введите автора: ");
-                    String magazineAuthor = sc.nextLine();
-
-                    System.out.print("Введите год: ");
-                    int magazineYear = sc.nextInt();
-                    sc.nextLine();
-
-                    System.out.print("Введите номер журнала: ");
-                    int issueNumber = sc.nextInt();
-                    sc.nextLine();
-
-                    Printable magazine = new Magazine(issueNumber, magazineTitle, magazineAuthor, magazineYear);
-                    library.addPublication((Publication) magazine);
+                    System.out.println("Вот все что в каталоге: ");
+                    library.listPublications();
 
                     break;
-
                 case (3):
-                    System.out.print("Введите название: ");
-                    String newsTitle = sc.nextLine();
-
-                    System.out.print("Введите автора: ");
-                    String newsAuthor = sc.nextLine();
-
-                    System.out.print("Введите год: ");
-                    int newsYear = sc.nextInt();
-                    sc.nextLine();
-
-                    System.out.print("Введите день публикации: ");
-                    String publicationDay = sc.nextLine();
-
-                    Printable newspaper = new Newspaper(publicationDay, newsTitle, newsAuthor, newsYear);
-                    library.addPublication((Publication) newspaper);
-
-                    break;
-
-                case (4):
                     System.out.print("Введите имя автора: ");
                     String authorName = sc.nextLine();
 
                     library.searchByAuthor(authorName);
 
                     break;
-                case (5):
-                    System.out.println("Вот все что в каталоге: ");
-                    library.listPublications();
-                    break;
 
-                case (6):
+                case (4):
                     System.out.println("Кол-во публикаций в каталоге: " + Publication.getPublicationCount());
 
-                case (7):
+                    break;
+
+                case (5):
                     library.listPublications();
                     System.out.println();
 
@@ -120,7 +131,9 @@ public class Main {
                     sc.nextLine();
 
                     library.removePublication(removeAuthor);
+
                     break;
+
                 case (0):
                     System.out.println("Выход из программы...");
                     return;
