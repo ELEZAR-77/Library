@@ -1,16 +1,23 @@
 package org.example;
 
 public abstract class Publication {
+    private final int id;
+
     private String title;
     private String author;
     private int year;
     private static int publicationCount = 0;
 
     public Publication(String title, String author, int year) {
+        publicationCount ++;
+        this.id = publicationCount;
         this.title = title;
         this.author = author;
         this.year = year;
-        publicationCount ++;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getTitle() {
@@ -49,9 +56,10 @@ public abstract class Publication {
 
     @Override
     public String toString() {
-        return "Publication{" +
-                "title='" + title + '\'' +
-                ", author='" + author + '\'' +
+        return "[id=" + id + "]" +
+                " Publication{" +
+                "title=" + title + '\'' +
+                ", author=" + author + '\'' +
                 ", year=" + year +
                 '}';
     }
@@ -66,9 +74,9 @@ public abstract class Publication {
 
     @Override
     public int hashCode() {
-        int result = 11;
-        result = 31 * (title != null ? title.hashCode() : 0);
-        result = 31 * (author != null ? author.hashCode() : 0);
+        int result = title != null ? title.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (author != null ? author.hashCode() : 0);
         result = 31 * result + year;
         return result;
     }
